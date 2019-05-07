@@ -1,0 +1,251 @@
+﻿@model LND.Web.Models.ProductViewModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/layouts.cshtml";
+}
+
+<!--/single_page-->
+<!-- /banner_bottom_agile_info -->
+<div class="page-head_agile_info_w3l">
+    <div class="container">
+        <!--/w3_short-->
+        <div class="services-breadcrumb">
+            <div class="agile_inner_breadcrumb">
+                <ul class="w3_short">
+                    <li><a href="Home/Index">Trang chủ</a><i>/</i></li>
+                    <li>Chi tiết sản phẩm </li>
+                </ul>
+            </div>
+        </div>
+        <!--//w3_short-->
+    </div>
+</div>
+<!-- banner-bootom-w3-agileits -->
+<div class="banner-bootom-w3-agileits">
+    <div class="container">
+        <div class="col-md-4 single-right-left ">
+            <div class="grid images_3_of_2">
+                <div class="flexslider">
+
+                    <ul class="slides">
+                        @{
+                            var moreImages = (List<string>)ViewBag.MoreImages;
+                            foreach (var image in moreImages.Take(3))
+                            {
+                                <li data-thumb="@image">
+                                    <div class="thumb-image img-responsive"> <img src="@image" data-imagezoom="true"> </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 single-right-left simpleCart_shelfItem">
+            <h3>@Model.Name</h3>
+            @if (Model.PromotionPrice.HasValue)
+            {
+                var priceCurent = Model.Price * (1 - Model.PromotionPrice / 100);
+                <p><span class="item_price">@priceCurent.Value.ToString("N0")</span> <del>@Model.Price.ToString("N0")</del></p>
+            }
+            else
+            {
+                <p><span class="item_price">@Model.Price</span> </p>
+            }
+            <div class="rating1">
+                <span class="starRating">
+                    <input id="rating5" type="radio" name="rating" value="5">
+                    <label for="rating5">5</label>
+                    <input id="rating4" type="radio" name="rating" value="4">
+                    <label for="rating4">4</label>
+                    <input id="rating3" type="radio" name="rating" value="3" checked="">
+                    <label for="rating3">3</label>
+                    <input id="rating2" type="radio" name="rating" value="2">
+                    <label for="rating2">2</label>
+                    <input id="rating1" type="radio" name="rating" value="1">
+                    <label for="rating1">1</label>
+                </span>
+            </div>
+            <div class="description">
+                <h5>Mã giảm giá</h5>
+                <form action="#" method="post">
+                    <input type="text" value="Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Code';}">
+                    <input type="submit" value="Check">
+                </form>
+            </div>
+            <div class="occasion-cart">
+                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                    <form action="#" method="post">
+                        <fieldset>
+                            <input type="hidden" name="cmd" value="_cart">
+                            <input type="hidden" name="add" value="1">
+                            <input type="hidden" name="business" value=" ">
+                            <input type="hidden" name="item_name" value="Wing Sneakers">
+                            <input type="hidden" name="amount" value="650.00">
+                            <input type="hidden" name="discount_amount" value="1.00">
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="return" value=" ">
+                            <input type="hidden" name="cancel_return" value=" ">
+                            <input type="submit" name="submit" value="Add to cart" class="button">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            @if (Model.Warranty != null)
+            {
+                <div>Thời gian bảo hành: @Model.Warranty tháng.</div>
+            }
+            <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+                <li class="share">Chia sẻ: </li>
+                <li>
+                    <a href="#" class="facebook">
+                        <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="twitter">
+                        <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="instagram">
+                        <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="pinterest">
+                        <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                        <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+        <!-- /new_arrivals -->
+        <div class="responsive_tabs_agileits">
+            <div id="horizontalTab">
+                <ul class="resp-tabs-list">
+                    <li>Mô tả sản phẩm </li>
+                    <li>Nhận xét</li>
+                    <li>Thông tin chi tiết</li>
+                </ul>
+                <div class="resp-tabs-container">
+                    <!--/tab_one-->
+                    <div class="tab1">
+
+                        <div class="single_page_agile_its_w3ls">
+                            @Model.Description
+                        </div>
+                    </div>
+                    <!--//tab_one-->
+                    <div class="tab2">
+
+                        <div class="single_page_agile_its_w3ls">
+                            <div class="bootstrap-tab-text-grids">
+                                <div class="bootstrap-tab-text-grid">
+                                    <div class="bootstrap-tab-text-grid-left">
+                                        <img src="~/Assets/client/images/t1.jpg" alt=" " class="img-responsive">
+                                    </div>
+                                    <div class="bootstrap-tab-text-grid-right">
+                                        <ul>
+                                            <li><a href="#">Admin</a></li>
+                                            <li><a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i> Trả lời</a></li>
+                                        </ul>
+                                        <p>
+                                            Cho chúng tôi biết nhận xét của bạn về sản phẩm @Model.Name này . Chúng tôi sẽ xem xét thông tin mà bạn cung cấp để có thể sửa lỗi sản phẩm ( nếu có) để có thể phục vụ bạn đuợc tốt hơn.
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="add-review">
+                                    <h4>Thêm nhận xét</h4>
+                                    <form action="#" method="post">
+                                        <input type="text" name="Name" required="Name" placeholder="Tên của bạn...">
+                                        <input type="email" name="Email" required="Email" placeholder="Email...">
+                                        <textarea name="Message" required="" placeholder="Nhận xét..."></textarea>
+                                        <input type="submit" value="Gửi">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab3">
+
+                    <div class="single_page_agile_its_w3ls">
+                        <h3> Hien san pham chua co thong tin chi tiet</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Relate products -->
+@{
+    var relatedProducts = (IEnumerable<LND.Web.Models.ProductViewModel>)ViewBag.RelatedProducts;
+}
+<div class="text-center"><h2>Sản Phẩm Liên Quan</h2></div>
+<hr />
+<div class="resp-tabs-container" style="padding-left:100px; padding-right:100px; padding-bottom:500px;">
+    @foreach (var product in relatedProducts)
+    {
+        var url = product.Alias + "-p-" + product.ID + "-html";
+        var pricePromotion = product.Price * (1 - product.PromotionPrice / 100);
+
+        <div class="col-md-3 product-men">
+            <div class="men-pro-item simpleCart_shelfItem">
+
+                <div class="men-thumb-item">
+                    <img src="@product.Image" alt="" class="pro-image-front">
+                    <img src="@product.Image" alt="" class="pro-image-back">
+                    <div class="men-cart-pro">
+                        <div class="inner-men-cart-pro">
+                            <a href="@url" class="link-product-add-cart">Quick View</a>
+                        </div>
+                    </div>
+                    @if (product.HotFlag == true)
+                    {
+                        <span class="product-new-top">Hot</span>
+                    }
+                    @*<span class="product-new-top">Hot</span>*@
+                </div>
+                <div class="item-info-product ">
+                    <h4><a href="@url">@product.Name</a></h4>
+                    <div class="info-product-price">
+
+                        @if (product.PromotionPrice.HasValue)
+                        {
+                            <span class="item_price">@pricePromotion.Value.ToString("N0") đ</span> <br />
+                            <del>@product.Price.ToString("N0") đ</del>
+                        }
+                        else
+                        {
+                            <br />
+                            <span class="item_price">@product.Price.ToString("N0")</span>
+                        }
+                    </div>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                        <form action="#" method="post">
+                            <fieldset>
+                                <input type="hidden" name="cmd" value="_cart" />
+                                <input type="hidden" name="add" value="1" />
+                                <input type="hidden" name="business" value=" " />
+                                <input type="hidden" name="item_name" value="Formal Blue Shirt" />
+                                <input type="hidden" name="amount" value="30.99" />
+                                <input type="hidden" name="discount_amount" value="1.00" />
+                                <input type="hidden" name="currency_code" value="USD" />
+                                <input type="hidden" name="return" value=" " />
+                                <input type="hidden" name="cancel_return" value=" " />
+                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

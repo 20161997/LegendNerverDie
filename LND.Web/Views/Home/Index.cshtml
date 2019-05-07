@@ -1,0 +1,220 @@
+﻿@model IEnumerable<LND.Web.Models.ProductViewModel>
+@{
+    ViewBag.Title = "Legend Never Die - Website for đồ án 1"; 
+    Layout = "~/Views/Shared/layouts.cshtml";
+}
+
+@{Html.RenderAction("HomeSlide", "Home"); }
+<!--Top sale-->
+<!--//Top sale-->
+<!--New Products-->
+<br />
+<h3 class="wthree_text_info">Hàng mới về</h3>
+<hr />
+<div class="new_arrivals_agile_w3ls_info">
+    <div class="container">
+        <div id="horizontalTab">
+            <ul class="resp-tabs-list">
+                <li> Thời trang nam</li>
+                <li> Thời trang nữ</li>
+                <li> Túi xách</li>
+                <li> Giày </li>
+            </ul>
+            <div class="resp-tabs-container">
+                <!--/tab_one-->
+                <div class="tab1">
+                    @foreach (var product in Model.Take(12))
+                    {
+                        var url = "/" + product.Alias + "-p-" + product.ID + "-html";
+                        var pricePromotion = product.Price * (1 - product.PromotionPrice / 100);
+
+                        <div class="col-md-3 product-men">
+                            <div class="men-pro-item simpleCart_shelfItem">
+
+                                <div class="men-thumb-item">
+                                    <img src="@product.Image" alt="" class="pro-image-front">
+                                    <img src="@product.Image" alt="" class="pro-image-back">
+                                    <div class="men-cart-pro">
+                                        <div class="inner-men-cart-pro">
+                                            <a href="@url" class="link-product-add-cart">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <span class="product-new-top">New</span>
+                                </div>
+                                <div class="item-info-product ">
+                                    <h4><a href="@url">@product.Name</a></h4>
+                                    <div class="info-product-price">
+
+                                        @if (product.PromotionPrice.HasValue)
+                                        {
+                                            <span class="item_price">@pricePromotion.Value.ToString("N0") đ</span> <br />
+                                            <del>@product.Price.ToString("N0") đ</del>
+                                        }
+                                        else
+                                        {
+                                            <br />
+                                            <span class="item_price">@product.Price.ToString("N0")</span>
+                                        }
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                                        <form action="#" method="post">
+                                            <fieldset>
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="business" value=" " />
+                                                <input type="hidden" name="item_name" value="Formal Blue Shirt" />
+                                                <input type="hidden" name="amount" value="30.99" />
+                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="currency_code" value="USD" />
+                                                <input type="hidden" name="return" value=" " />
+                                                <input type="hidden" name="cancel_return" value=" " />
+                                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <a href="product.html" class=" btn btn-primary" style="position:relative;left:81%;width:200px;margin-top:20px;"> View all >>></a>
+                    <div class="clearfix"></div>
+
+                </div>
+                <!--//tab_one-->
+                <!--/tab_two-->
+                <div class="tab2">
+                    <div class="col-md-3 product-men">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="/Assets/client/images/w1.jpg" alt="" class="pro-image-front">
+                                <img src="/Assets/client/images/w1.jpg" alt="" class="pro-image-back">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+                            </div>
+                            <div class="item-info-product ">
+                                <h4><a href="single.html">A-line Black Skirt</a></h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">$130.99</span>
+                                    <del>$189.71</del>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_name" value="A-line Black Skirt" />
+                                            <input type="hidden" name="amount" value="30.99" />
+                                            <input type="hidden" name="discount_amount" value="1.00" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<a href="product.html" class=" btn btn-primary" style="position:relative;left:81%;width:200px;margin-top:20px;"> all >>></a>*@
+                    <div class="clearfix"></div>
+                </div>
+                <!--//tab_two-->
+                <div class="tab3">
+                    <div class="col-md-3 product-men">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="/Assets/client/images/b1.jpg" alt="" class="pro-image-front">
+                                <img src="/Assets/client/images/b1.jpg" alt="" class="pro-image-back">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+                            </div>
+                            <div class="item-info-product ">
+                                <h4><a href="single.html">Laptop Messenger Bag</a></h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">$140.99</span>
+                                    <del>$169.71</del>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_name" value=" Laptop Messenger Bag" />
+                                            <input type="hidden" name="amount" value="30.99" />
+                                            <input type="hidden" name="discount_amount" value="1.00" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<a href="product.html" class=" btn btn-primary" style="position:relative;left:81%;width:200px;margin-top:20px;"> all >>></a>*@
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab4">
+                    <div class="col-md-3 product-men">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="/Assets/client/images/s1.jpg" alt="" class="pro-image-front">
+                                <img src="/Assets/client/images/s1.jpg" alt="" class="pro-image-back">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+                            </div>
+                            <div class="item-info-product ">
+                                <h4><a href="single.html">Running Shoes</a></h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">$80.99</span>
+                                    <del>$89.71</del>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_name" value="Running Shoes" />
+                                            <input type="hidden" name="amount" value="30.99" />
+                                            <input type="hidden" name="discount_amount" value="1.00" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   @* <a href="product.html" class=" btn btn-primary" style="position:relative;left:81%;width:200px;margin-top:20px;"> all >>></a>*@
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/New prosucts-->
+<!-- /we-offer -->
+<div class="sale-w3ls">
+    <div class="container">
+        <h6>We Offer Flat <span>40%</span> Discount</h6>
+        <a class="hvr-outline-out button2" href="Home/Index">Shop Now </a>
+    </div>
+</div>
