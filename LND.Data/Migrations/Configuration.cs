@@ -46,21 +46,42 @@
 
             //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
             CreateProductCategorySample(context);
+            CreateContactDetailSample(context);
 
         }
         private void CreateProductCategorySample(LND.Data.LegendNeverDieDbContext context)
         {
-            if (context.ProductCategories.Count() == 0)
+            //if (context.ProductCategories.Count() == 0)
+            //{
+            //    List<ProductCategory> listProductCategory = new List<ProductCategory>()
+            //{
+            //    new ProductCategory() { Name="Điện lạnh",Alias="dien-lanh",Status=true },
+            //     new ProductCategory() { Name="Viễn thông",Alias="vien-thong",Status=true },
+            //      new ProductCategory() { Name="Đồ gia dụng",Alias="do-gia-dung",Status=true },
+            //       new ProductCategory() { Name="Mỹ phẩm",Alias="my-pham",Status=true }
+            //};
+            //    context.ProductCategories.AddRange(listProductCategory);
+            //    context.SaveChanges();
+            //}
+
+        }
+        private void CreateContactDetailSample(LegendNeverDieDbContext context)
+        {
+            if (context.ContactDetails.Count() == 0)
             {
-                List<ProductCategory> listProductCategory = new List<ProductCategory>()
-            {
-                new ProductCategory() { Name="Điện lạnh",Alias="dien-lanh",Status=true },
-                 new ProductCategory() { Name="Viễn thông",Alias="vien-thong",Status=true },
-                  new ProductCategory() { Name="Đồ gia dụng",Alias="do-gia-dung",Status=true },
-                   new ProductCategory() { Name="Mỹ phẩm",Alias="my-pham",Status=true }
-            };
-                context.ProductCategories.AddRange(listProductCategory);
+                var contactDetail = new LND.Model.Models.ContactDetail();
+                {
+                    contactDetail.Name = "Legend Never Die";
+                    contactDetail.Address = "D3-Đại học bách khoa Hà Nội";
+                    contactDetail.Email = "lnd@legendneverdie.com";
+                    contactDetail.Website = "https://hust.edu.vn";
+                    contactDetail.Latitude = 21.0051747;
+                    contactDetail.Longitude = 105.8420479;
+
+                }
+                context.ContactDetails.Add(contactDetail);
                 context.SaveChanges();
+               
             }
 
         }

@@ -9,14 +9,6 @@ namespace LND.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-          name: "About",
-          url: "gioi-thieu-html",
-          defaults: new { controller = "Home", action = "About", id = UrlParameter.Optional },
-          namespaces: new string[] { "LND.Web.Controllers" }
-
-      );
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(
           name: "Search",
           url: "tim-kiem-html",
           defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
@@ -27,7 +19,7 @@ namespace LND.Web
             routes.MapRoute(
           name: "Contact",
           url: "lien-he-html",
-          defaults: new { controller = "Home", action = "Contact", id = UrlParameter.Optional },
+          defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
           namespaces: new string[] { "LND.Web.Controllers" }
       );
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -56,6 +48,12 @@ namespace LND.Web
            defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
              namespaces: new string[] { "LND.Web.Controllers" }
        );
+            routes.MapRoute(
+           name: "Product By Tag",
+           url: "tag-{id}-html",
+           defaults: new { controller = "Product", action = "ListByTag", id = UrlParameter.Optional },
+               namespaces: new string[] { "LND.Web.Controllers" }
+      );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -86,8 +86,17 @@
     <Compile Include="Migrations\201905061224235_AddMoreQuantity.Designer.cs">
       <DependentUpon>201905061224235_AddMoreQuantity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905081000438_ContactDetail.cs" />
+    <Compile Include="Migrations\201905081000438_ContactDetail.Designer.cs">
+      <DependentUpon>201905081000438_ContactDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081332089_AddStatusField.cs" />
+    <Compile Include="Migrations\201905081332089_AddStatusField.Designer.cs">
+      <DependentUpon>201905081332089_AddStatusField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FooterRepository.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
@@ -141,6 +150,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905061224235_AddMoreQuantity.resx">
       <DependentUpon>201905061224235_AddMoreQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081000438_ContactDetail.resx">
+      <DependentUpon>201905081000438_ContactDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081332089_AddStatusField.resx">
+      <DependentUpon>201905081332089_AddStatusField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

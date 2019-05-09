@@ -1,0 +1,133 @@
+﻿@model LND.Web.Infrastructure.Core.PaginationSet<LND.Web.Models.ProductViewModel>
+@{
+    var tag = (LND.Web.Models.TagViewModel)ViewBag.Tag;
+    ViewBag.Title = "Kết quả tìm kiếm cho tag ";
+    Layout = "~/Views/Shared/layouts.cshtml";
+}
+
+<div class="h2t_img_SMN_header">
+    <div class="container">
+        <!--/w3_short-->
+        <div class="services-breadcrumb">
+            <div class="agile_inner_breadcrumb">
+                <ul class="w3_short">
+                    <li><a href="Home/Index">Trang chủ</a><i>|</i></li>
+                    <li>@tag.Name</li>
+                </ul>
+            </div>
+        </div>
+        <!--//w3_short-->
+    </div>
+</div>
+<br />
+<div class="text-center"> <span>Có @Model.Count sản phẩm có thẻ "@tag.Name" được tìm thấy</span></div>
+<div class="resp-tabs-container" style="padding-left:100px; padding-right:100px;">
+
+    @foreach (var product in Model.Items)
+    {
+        var url ="/"+ product.Alias + "-p-" + product.ID + "-html";
+        var pricePromotion = product.Price * (1 - product.PromotionPrice / 100);
+
+        <div class="col-md-3 product-men">
+            <div class="men-pro-item simpleCart_shelfItem">
+
+                <div class="men-thumb-item">
+                    <img src="@product.Image" alt="" class="pro-image-front">
+                    <img src="@product.Image" alt="" class="pro-image-back">
+                    <div class="men-cart-pro">
+                        <div class="inner-men-cart-pro">
+                            <a href="@url" class="link-product-add-cart">Quick View</a>
+                        </div>
+                    </div>
+                    @if (product.HotFlag == true)
+                    {
+                        <span class="product-new-top">Hot</span>
+                    }
+                    @*<span class="product-new-top">Hot</span>*@
+                </div>
+                <div class="item-info-product ">
+                    <h4><a href="@url">@product.Name</a></h4>
+                    <div class="info-product-price">
+
+                        @if (product.PromotionPrice.HasValue)
+                        {
+                            <span class="item_price">@pricePromotion.Value.ToString("N0") đ</span> <br />
+                            <del>@product.Price.ToString("N0") đ</del>
+                        }
+                        else
+                        {
+                            <br />
+                            <span class="item_price">@product.Price.ToString("N0")</span>
+                        }
+                    </div>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                        <form action="#" method="post">
+                            <fieldset>
+                                <input type="hidden" name="cmd" value="_cart" />
+                                <input type="hidden" name="add" value="1" />
+                                <input type="hidden" name="business" value=" " />
+                                <input type="hidden" name="item_name" value="Formal Blue Shirt" />
+                                <input type="hidden" name="amount" value="30.99" />
+                                <input type="hidden" name="discount_amount" value="1.00" />
+                                <input type="hidden" name="currency_code" value="USD" />
+                                <input type="hidden" name="return" value=" " />
+                                <input type="hidden" name="cancel_return" value=" " />
+                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="clearfix"></div>
+    @if (Model.TotalPages > 1)
+    {
+        // Create numeric links
+        var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+        var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+
+        <nav>
+            <ul class="pagination" style="padding-left:20px !important;">
+                @if (Model.Page > 1)
+                {
+                    <li>
+                        <a href="?page=1" aria-label="First">
+                            <i class="fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=@(Model.Page-1)" aria-label="Previous">
+                            <i class="fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                }
+
+                @for (int i = startPageIndex; i <= endPageIndex; i++)
+                {
+                    if (Model.Page == i)
+                    {
+                        <li class="active"><a href="?page=@i" title="Trang @i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="?page=@i" title="Trang @i">@i</a></li>
+                    }
+                }
+                @if (Model.Page < Model.TotalPages)
+                {
+                    <li>
+                        <a href="?page=@(Model.Page+1)" aria-label="Next">
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="?page=@Model.TotalPages" aria-label="Last">
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+</div>

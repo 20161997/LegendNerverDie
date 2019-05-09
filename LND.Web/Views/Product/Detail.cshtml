@@ -47,7 +47,7 @@
             @if (Model.PromotionPrice.HasValue)
             {
                 var priceCurent = Model.Price * (1 - Model.PromotionPrice / 100);
-                <p><span class="item_price">@priceCurent.Value.ToString("N0")</span> <del>@Model.Price.ToString("N0")</del></p>
+                <p><span class="item_price">@priceCurent.Value.ToString("N0") đ</span> <del>@Model.Price.ToString("N0") đ</del></p>
             }
             else
             {
@@ -96,6 +96,20 @@
             {
                 <div>Thời gian bảo hành: @Model.Warranty tháng.</div>
             }
+            @{ 
+                var Tags= (IEnumerable<LND.Web.Models.TagViewModel>)ViewBag.Tags;
+            }
+            <div class="tag">
+                <h5>Tag :</h5>
+                <ul class="taglist">
+                    @foreach (var tag in Tags)
+                    {
+                        <li><a href="/tag-@(tag.ID)-html">@(tag.Name) , </a></li>
+                    }
+
+                </ul>
+            </div>
+            <div class="clearfix"></div>
             <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
                 <li class="share">Chia sẻ: </li>
                 <li>

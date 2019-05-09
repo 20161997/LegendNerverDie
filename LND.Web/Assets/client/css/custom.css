@@ -159,3 +159,18 @@ body {
     min-height: 500px;
     padding-top: 50px;
 }
+.tag {
+    display: block;
+}
+
+.taglist li {
+   
+    float: left;
+    display:inline;
+}
+.taglist a{
+    color:black;
+}
+.taglist a:hover{
+    color: red;
+}

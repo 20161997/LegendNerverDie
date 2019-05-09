@@ -31,6 +31,7 @@ namespace LND.Web.Controllers
             ViewBag.RelatedProducts = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(relatedProduct);
             List<string> listImages = new JavaScriptSerializer().Deserialize<List<string>>(viewModel.MoreImages);
             ViewBag.MoreImages = listImages;
+            ViewBag.Tags = Mapper.Map<IEnumerable<Tag>, IEnumerable<TagViewModel>>(_productService.GetListTagByProductId(id));
             return View(viewModel);
         }
 
@@ -50,6 +51,26 @@ namespace LND.Web.Controllers
                 MaxPage = 5,
                 Page = page,
                
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+
+            return View(paginationSet);
+        }
+        public ActionResult ListByTag(string id, int page = 1)
+        {
+            int pageSize = 12;
+            int totalRow = 0;
+            var productModel = _productService.GetListProductByTag(id, page, pageSize, out totalRow);
+            var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
+            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+
+            ViewBag.Tag = Mapper.Map<Tag, TagViewModel>(_productService.GetTag(id));
+            var paginationSet = new PaginationSet<ProductViewModel>()
+            {
+                Items = productViewModel,
+                MaxPage = 5,
+                Page = page,
                 TotalCount = totalRow,
                 TotalPages = totalPage
             };

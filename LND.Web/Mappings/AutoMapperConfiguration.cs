@@ -34,6 +34,7 @@ namespace LND.Web.Mappings
             CreateMap<ProductCategory, ProductCategoryViewModel>();
             CreateMap<Product, ProductViewModel>();
             CreateMap<ProductTag, ProductTagViewModel>();
+            CreateMap<ContactDetail, ContactDetailViewModel>();
         }
     }
 }

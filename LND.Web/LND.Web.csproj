@@ -197,6 +197,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,6 +207,7 @@
     <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\ContactDetailViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
@@ -3984,7 +3986,7 @@
     <Content Include="Assets\client\css\easy-responsive-tabs.css" />
     <Content Include="Assets\client\css\flexslider.css" />
     <Content Include="Assets\client\css\font-awesome.css" />
-    <Content Include="Assets\client\css\h2t.css" />
+    <Content Include="Assets\client\css\custom.css" />
     <Content Include="Assets\client\css\jquery-ui.css" />
     <Content Include="Assets\client\css\style.css" />
     <Content Include="Assets\client\css\team.css" />
@@ -4071,6 +4073,7 @@
     <Content Include="Assets\client\images\w7.jpg" />
     <Content Include="Assets\client\images\w8.jpg" />
     <Content Include="Assets\client\js\bootstrap.js" />
+    <Content Include="Assets\client\js\controllers\contact.js" />
     <Content Include="Assets\client\js\easy-responsive-tabs.js" />
     <Content Include="Assets\client\js\imagezoom.js" />
     <Content Include="Assets\client\js\jquery-2.1.4.min.js" />
@@ -4290,10 +4293,10 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Product\Category.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Product\Sale.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\Product\ListByTag.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
