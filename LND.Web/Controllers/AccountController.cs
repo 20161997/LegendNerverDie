@@ -104,7 +104,8 @@ namespace LND.Web.Controllers
                 ViewData["SuccessMsg"] = "Đăng ký thành công";
             }
 
-            return View();
+            //return View();
+            return RedirectToAction("Index", "Home");
         }
       
     }

@@ -306,6 +306,8 @@
     <Content Include="Assets\admin\libs\angular-loading-bar\index.js" />
     <Content Include="Assets\admin\libs\angular-loading-bar\src\loading-bar.css" />
     <Content Include="Assets\admin\libs\angular-loading-bar\src\loading-bar.js" />
+    <Content Include="Assets\admin\libs\angular-local-storage.js" />
+    <Content Include="Assets\admin\libs\angular-local-storage.min.js" />
     <Content Include="Assets\admin\libs\angular-local-storage\.gitattributes" />
     <Content Include="Assets\admin\libs\angular-local-storage\.gitignore" />
     <Content Include="Assets\admin\libs\angular-local-storage\demo\demo-app.js" />
@@ -314,8 +316,10 @@
     <Content Include="Assets\admin\libs\angular-local-storage\dist\angular-local-storage.js" />
     <Content Include="Assets\admin\libs\angular-local-storage\dist\angular-local-storage.min.js" />
     <Content Include="Assets\admin\libs\angular-local-storage\index.js" />
+    <Content Include="Assets\admin\libs\angular-route.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\release\angular-ui-router.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\release\angular-ui-router.min.js" />
+    <Content Include="Assets\admin\libs\angular.js" />
     <Content Include="Assets\admin\libs\angular\angular-csp.css" />
     <Content Include="Assets\admin\libs\angular\angular.js" />
     <Content Include="Assets\admin\libs\angular\angular.min.js" />
@@ -3623,7 +3627,12 @@
     <Content Include="Assets\admin\libs\ckfinder\translations.txt" />
     <Content Include="Assets\admin\libs\css\bootstrap-rtl.css" />
     <Content Include="Assets\admin\libs\css\bootstrap-rtl.min.css" />
+    <Content Include="Assets\admin\libs\fastclick.js" />
+    <Content Include="Assets\admin\libs\fastclick.min.js" />
     <Content Include="Assets\admin\libs\fastclick\lib\fastclick.js" />
+    <Content Include="Assets\admin\libs\jquery.js" />
+    <Content Include="Assets\admin\libs\jquery.min.js" />
+    <Content Include="Assets\admin\libs\jquery.slimscroll.js" />
     <Content Include="Assets\admin\libs\jquery\dist\jquery.js" />
     <Content Include="Assets\admin\libs\jquery\dist\jquery.min.js" />
     <Content Include="Assets\admin\libs\jquery\dist\jquery.slim.js" />
