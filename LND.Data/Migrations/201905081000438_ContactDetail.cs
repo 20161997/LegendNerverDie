@@ -21,7 +21,7 @@ namespace LND.Data.Migrations
                         Longitude = c.Double(),
                     })
                 .PrimaryKey(t => t.ID);
-            
+            Sql("update dbo.ContactDetails set Email=legendneverdie@gmail.com");
         }
         
         public override void Down()

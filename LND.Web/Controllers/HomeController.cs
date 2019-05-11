@@ -13,17 +13,20 @@ namespace LND.Web.Controllers
         private IProductCategoryService _productCategoryService;
 
         public HomeController(IProductService productService, IProductCategoryService productCategoryService)
+
         {
             this._productService = productService;
             this._productCategoryService = productCategoryService;
         }
-        [OutputCache(Duration = 3600,Location =System.Web.UI.OutputCacheLocation.Server)]
+       
+        [OutputCache(Duration = 3600, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index()
         {
             var model = _productService.GetAll();
             var listProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(model);
             return View(listProductViewModel);
         }
+
         [ChildActionOnly]
         [OutputCache(Duration = 3600)]
         public ActionResult Header()
@@ -32,16 +35,10 @@ namespace LND.Web.Controllers
             var listProductCategoryViewModel = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
             return PartialView(listProductCategoryViewModel);
         }
-        [ChildActionOnly]
-        [OutputCache(Duration =3600)]
-        public ActionResult Footer()
-        {
-            return PartialView();
-        }
 
         [ChildActionOnly]
         [OutputCache(Duration = 3600)]
-        public ActionResult SignIn()
+        public ActionResult Footer()
         {
             return PartialView();
         }
@@ -52,5 +49,7 @@ namespace LND.Web.Controllers
         {
             return PartialView();
         }
+
+        // account
     }
 }

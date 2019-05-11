@@ -1,57 +1,203 @@
-﻿@model LND.Web.Models.ContactDetailViewModel
-
+﻿@model LND.Web.Models.FeedbackViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/layouts.cshtml";
 }
 <style>
     #map {
-        height: 600px; 
+        height: 500px;
         width: 100%;
-       
     }
 </style>
+<div style="padding-top:100px;padding-left:100px;padding-right:100px;">
+     <div id="map"></div>    
+</div>
 
-<div>
-    <div style=" float: left; width: 70%; padding-left: 20px;padding-top:50px; height: 700px;box-sizing: border-box;">
-        <div id="map"></div>
-    </div>
-    <div style=" float: left; width: 30%; padding-left: 20px;padding-top:50px; height: 700px;box-sizing: border-box;">
-        <h3>Thông tin liên hệ</h3>
-        <address class="address">
-            <p>@Model.Address</p>
-            <dl>
-                <dt> </dt>
-                <dd>Điện thoại:<span> @Model.Phone</span></dd>
-                <dd>E-mail:&nbsp; <a href="mailto:@(Model.Email)">@(Model.Email)</a></dd>
-            </dl>
-        </address>
-        <div class="clearfix"></div>
+<div class="banner_bottom_agile_info">
+    <div class="container">
+        <div class="agile-contact-grids">
+            <div class="agile-contact-left">
+                <div class="col-md-6 address-grid">
+                    <h4>Xem thêm <span>Thông tin</span></h4>
+                    <div class="mail-agileits-w3layouts">
+                        <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                        <div class="contact-right">
+                            <p>Telephone </p><span>+84 34567898</span>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="mail-agileits-w3layouts">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <div class="contact-right">
+                            <p>Mail </p><a href="mailto:info@example.com">legendneverdie@gmai.com</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="mail-agileits-w3layouts">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <div class="contact-right">
+                            <p>Địa chỉ</p><span>D3- Đại học bách khoa HN.</span>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <ul class="social-nav model-3d-0 footer-social w3_agile_social two contact">
+                        <li class="share">Chia sẻ : </li>
+                        <li>
+                            <a href="#" class="facebook">
+                                <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="twitter">
+                                <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="instagram">
+                                <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="pinterest">
+                                <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 contact-form">
+                    @using (Html.BeginForm("SendFeedback", "Contact", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken();
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
+                        if (ViewData["SuccessMsg"] != null)
+                        {
+                            <div class="alert alert-success" role="alert">
+                                <strong>Gửi phản hồi thành công. </strong>
+                            </div>
+                        }
+
+                        <h4 class="white-w3ls">Đăng kí</h4>
+                        <form action="#" method="post">
+                            <div class="styled-input agile-styled-input-top">
+                                @Html.TextBoxFor(model => model.Name)
+                                <label>Họ tên</label>
+                                <span></span>
+                            </div>
+                            <div class="styled-input">
+                                @Html.TextBoxFor(model => model.Email)
+                                <label>Email</label>
+                                <span></span>
+                            </div>
+                            <div class="styled-input">
+                                @Html.TextAreaFor(model => model.Message)
+                                <label>Tin nhắn</label>
+                                <span></span>
+                            </div>
+                            <input type="submit" value="Gửi phản hồi">
+                        </form>
+                    }
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
     </div>
 </div>
-<script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div style=" float: left; width: 35%; padding-left: 20px;padding-top:50px; height: 700px;box-sizing: border-box;">
+    <h3>Thông tin liên hệ</h3>
+    <address class="address">
+        <p>@Model.ContactDetail.Address</p>
+        <dl>
+            <dt> </dt>
+            <dd>Điện thoại:<span> @Model.ContactDetail.Phone</span></dd>
+            <dd>E-mail:&nbsp; <a href="mailto:@(Model.ContactDetail.Email)">@(Model.ContactDetail.Email)</a></dd>
+        </dl>
+    </address>
+    <div class="clearfix"></div>
+    <h3>Gửi thông tin liên hệ</h3>
+    <div style="width:90%;">
+        <div class="contact-form">
+            <form>
+                @using (Html.BeginForm("SendFeedback", "Contact", FormMethod.Post))
+                {
+                    if (ViewData["SuccessMsg"] != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <strong>Gửi phản hồi thành công. </strong>
+                        </div>
+
+                    }
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    <div class="styled-input agile-styled-input-top">
+                        <label>Họ tên:</label>
+                        @Html.TextBoxFor(model => model.Name, new { @class = "textbox" })
+                        <span></span>
+                    </div>
+                    <div class="styled-input">
+                        <label for="author">Email:</label>
+
+                        @Html.TextBoxFor(model => model.Email, new { @class = "textbox" })
+                        <span></span>
+                    </div>
+                    <div class="styled-input">
+                        <label for="author">Message:</label>
+                        @Html.TextAreaFor(model => model.Message)
+                        <span></span>
+                    </div>
+                    <input type="submit" id="submit" value="Gửi">
+                    <div class="clearfix"> </div>
+                }
+            </form>
+        </div>
+    </div>*@
+   
+
+
+<script>
     var map, infoWindow;
     function initMap() {
       @*map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: @(Model.Latitude), lng: @(Model.Longitude)},
         zoom: 10
-        });*@       
+        });*@
            var mapProp= {
-                  center:new google.maps.LatLng(@(Model.Latitude),@(Model.Longitude)),
+                  center:new google.maps.LatLng(@(Model.ContactDetail.Latitude),@(Model.ContactDetail.Longitude)),
                zoom: 15,
                mapTypeId: google.maps.MapTypeId.HYBRID,
+              // mapTypeId: google.maps.MapTypeId.ROADMAP
                    };
-          var map = new google.maps.Map(document.getElementById("map"),mapProp);                  
+          var map = new google.maps.Map(document.getElementById("map"),mapProp);
         var marker = new google.maps.Marker({
             position: mapProp.center,
-            animation: google.maps.Animation.BOUNCE,            
-          
+            animation: google.maps.Animation.BOUNCE,
+
         });
       marker.setMap(map);
       infoWindow = new google.maps.InfoWindow;
-        
+
       // Try HTML5 geolocation.
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -89,7 +235,7 @@
                             'Error: Trinh duyet khong ho tro.');
       infoWindow.open(map);
         }
-    </script>
+</script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZV5xGOjrJE9A9OX53HuzwLYYP25MK8xI&callback=initMap">
 </script>
